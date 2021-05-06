@@ -12,9 +12,9 @@ import homeWork5.entities.concretes.User;
 
 public class UserManager implements UserService {
 	private UserDao userdao;
-	 private ArrayList<String> eMailList = new ArrayList<String>();
-	 private ArrayList<String> paswordList = new ArrayList<String>();
 
+	private List<String>  eMailList = new ArrayList<String>(); 
+	private List<String>  paswordList = new ArrayList<String>();
    
 	
 	public static boolean isEmailValid(String email) {
@@ -68,16 +68,16 @@ public class UserManager implements UserService {
 	}
 
 	@Override
-	public void login(User user) {
-		while(true) {
-		if(paswordList.contains(user.getPasword()) && eMailList.contains(user.getEmail())) {
+	public void login(String email, String pasword) {
+		
+		if(eMailList.contains(email)&& paswordList.contains(pasword)) {
 			
 		System.out.println("Baþarýyla giriþ yaptýnýz..");
 		return;
 		
 			
 		}
-		else {}
+		else {
 		System.out.println("Email ya da þifreniz yanlýþ lütfen tekrar deneyiniz.");
 		
 	}}

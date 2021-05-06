@@ -1,5 +1,7 @@
 package homeWork5.entities.concretes;
 
+
+
 import homeWork5.entities.abstracts.Entities;
 
 public class User implements Entities {
@@ -9,10 +11,12 @@ public class User implements Entities {
 	private String email;
 	private String pasword;
 	
+	private static int counter=0;
+	
 	public User() {}
-	public User(int id, String firstName, String lastName, String email, String pasword) {
+	public User(String firstName, String lastName, String email, String pasword) {
 		super();
-		this.id = id;
+		setId();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
@@ -21,8 +25,9 @@ public class User implements Entities {
 	public int getId() {
 		return id;
 	}
-	public void setId(int id) {
+	private void setId(int id) {
 		this.id = id;
+		
 	}
 	public String getFirstName() {
 		return firstName;
@@ -47,6 +52,9 @@ public class User implements Entities {
 	}
 	public void setPasword(String pasword) {
 		this.pasword = pasword;
+	}
+	private void setId() {
+		this.id = counter++;
 	}
 	
 

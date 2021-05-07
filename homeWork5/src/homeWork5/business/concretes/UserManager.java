@@ -6,12 +6,20 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 import homeWork5.business.abstracts.UserService;
+import homeWork5.core.abstracts.LoginWithGoogleService;
+import homeWork5.core.concretes.LoginWithGoogleManager;
 import homeWork5.dataAcces.abstracts.UserDao;
 import homeWork5.dataAcces.concretes.AbcUserDao;
 import homeWork5.entities.concretes.User;
 
 public class UserManager implements UserService {
 	private UserDao userdao;
+	private LoginWithGoogleService loginWithGoogle;
+
+	public UserManager(LoginWithGoogleService loginWithGoogle) {
+		
+		this.loginWithGoogle = loginWithGoogle;
+	}
 
 	private List<String>  eMailList = new ArrayList<String>(); 
 	private List<String>  paswordList = new ArrayList<String>();
@@ -81,6 +89,17 @@ public class UserManager implements UserService {
 		System.out.println("Email ya da þifreniz yanlýþ lütfen tekrar deneyiniz.");
 		
 	}}
+    @Override
+	public void loginWithGoogle(String email,String pasword) {
+    	if(isEmailValid(email) != true) {
+    		
+    		System.out.println("Geçersiz bir email adresi girdiniz.");
+    	}else {
+    		this.loginWithGoogle.login(email, pasword);
+    		
+    	}
+		
+	}
 
 	@Override
 	public List<User> getAll() {
